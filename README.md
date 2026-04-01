@@ -15,15 +15,16 @@ O projeto utiliza MySQL. Certifique-se de que o banco `taskmanager` existe ou de
 
 ## ✅ O que já foi implementado
 - [x] **Modelo de Dados**: Entidades de `Task` e `User` (UUID).
-- [x] **Regras de Negócio**: `TaskService` com validações e suporte a transações (@Transactional).
+- [x] **Regras de Negócio**: `TaskService` com suporte a transações (`@Transactional`).
 - [x] **Persistência**: Repositórios JPA com métodos de busca customizados.
-- [x] **DTOs**: Uso de Records para validação de entrada de dados.
+- [x] **DTOs**: Uso de Records para entrada (`TaskRequest`) e saída (`TaskResponse`).
+- [x] **Camada de Controller**: Endpoints REST (`GET`, `POST`, `PATCH`, `DELETE`) para gestão de tarefas.
+- [x] **Global Exception Handler**: Tratamento padronizado de erros com Exceptions customizadas (`TaskNotFound` e `TaskAlreadyFinished`).
 
 ## 🏗️ Próximos Passos (Roadmap)
-- [ ] **Camada de Controller**: Expor os endpoints REST.
-- [ ] **Global Exception Handler**: Tratamento padronizado de erros (ex: TaskNotFound).
-- [ ] **Documentação com Swagger/OpenAPI**: Para testar as rotas facilmente.
-- [ ] **Spring Security + JWT**: Implementação de autenticação (Planejado para fases futuras).
+- [ ] **Documentação com Swagger/OpenAPI**: Para testar as rotas facilmente via navegador.
+- [ ] **Spring Security + JWT**: Implementação de autenticação e controle de acesso.
+- [ ] **Docker**: Containerização da aplicação e do banco de dados.
 
 ---
 Desenvolvido por [Bifaniii](https://github.com/Bifaniii)
