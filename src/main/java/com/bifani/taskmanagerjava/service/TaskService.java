@@ -39,6 +39,11 @@ public class TaskService {
     }
 
     @Transactional
+    public TaskEntity getTaskById(Long id) {
+        return findByIdOrThrow(id);
+    }
+
+    @Transactional
     public TaskEntity updateTask(TaskRequest request, Long id) {
         var task = findByIdOrThrow(id);
 
