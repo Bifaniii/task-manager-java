@@ -10,9 +10,10 @@ public record TaskResponse(
         Long id,
         String title,
         String description,
-        TaskEnum status){
+        TaskEnum status,
+        LocalDateTime createdAt){
 
     public TaskResponse(TaskEntity entity) {
-        this(entity.getId(), entity.getTitle(), entity.getDescription(), entity.getStatus());
+        this(entity.getId(), entity.getTitle(), entity.getDescription(), entity.getStatus(), entity.getCreatedAt());
     }
 }
