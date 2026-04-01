@@ -4,6 +4,7 @@ import com.bifani.taskmanagerjava.database.model.TaskEntity;
 import com.bifani.taskmanagerjava.database.model.TaskEnum;
 import com.bifani.taskmanagerjava.database.repository.ITaskRepository;
 import com.bifani.taskmanagerjava.dto.TaskRequest;
+import com.bifani.taskmanagerjava.exception.TaskNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class TaskService {
     @Transactional(readOnly = true)
     public TaskEntity getTaskByTitle(String title) {
         return repository.findByTitle(title)
-                .orElseThrow(() -> new RuntimeException("Task com título '" + title + "' não encontrada!"));
+                .orElseThrow(() -> new TaskNotFoundException("Task com título '" + title + "' não encontrada!"));
     }
 
     @Transactional
@@ -73,6 +74,6 @@ public class TaskService {
 
     private TaskEntity findByIdOrThrow(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task com ID " + id + " não encontrada!"));
+                .orElseThrow(() -> new TaskNotFoundException("Task com ID " + id + " não encontrada!"));
     }
 }
