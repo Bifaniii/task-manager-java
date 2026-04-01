@@ -4,6 +4,7 @@ import com.bifani.taskmanagerjava.database.model.TaskEntity;
 import com.bifani.taskmanagerjava.database.model.TaskEnum;
 import com.bifani.taskmanagerjava.database.repository.ITaskRepository;
 import com.bifani.taskmanagerjava.dto.TaskRequest;
+import com.bifani.taskmanagerjava.exception.TaskAlreadyFinishedException;
 import com.bifani.taskmanagerjava.exception.TaskNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -59,7 +60,7 @@ public class TaskService {
         var task = findByIdOrThrow(id);
 
         if (task.getStatus() == TaskEnum.DONE) {
-            throw new RuntimeException("Erro! Tarefa já finalizada anteriormente");
+            throw new TaskAlreadyFinishedException("Erro! Tarefa já finalizada anteriormente");
         }
 
         task.setStatus(TaskEnum.DONE);
