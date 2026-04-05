@@ -3,6 +3,7 @@ package com.bifani.taskmanagerjava.service;
 import com.bifani.taskmanagerjava.database.model.User;
 import com.bifani.taskmanagerjava.database.repository.IUserRepository;
 import com.bifani.taskmanagerjava.dto.RegisterRequest;
+import com.bifani.taskmanagerjava.exception.UserAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,7 +28,7 @@ public class AuthorizationService implements UserDetailsService {
     @Transactional
     public void registerUser(RegisterRequest data) {
         if (repository.findByEmail(data.email()) != null) {
-            throw new RuntimeException("Usuário já cadastrado!");
+            throw new UserAlreadyExistsException("Este e-mail já está cadastrado no sistema!");
         }
 
         String encryptedPassword = passwordEncoder.encode(data.password());
