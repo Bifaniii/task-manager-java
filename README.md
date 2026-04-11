@@ -25,7 +25,28 @@ O projeto utiliza MySQL. Certifique-se de que o banco `taskmanager` existe ou de
 - [x] **DTOs**: Uso de Records para entrada (`Request`), saída (`Response`) e autenticação.
 - [x] **Camada de Controller**: Endpoints REST (`GET`, `POST`, `PATCH`, `DELETE`) protegidos por token.
 - [x] **Global Exception Handler**: Tratamento padronizado de erros com Exceptions customizadas (`TaskNotFound`, `TaskAlreadyFinished` e `UserAlreadyExists`).
-- [x] **Documentação com Swagger/OpenAPI**: Interface visual para testes de rotas disponível em `/swagger-ui.html`.
+- [x] **Documentação com Swagger/OpenAPI**: Interface visual para testes de rotas disponível em `/swagger-ui.html` com suporte a autenticação JWT Bearer.
+
+## 📖 Como Usar a API
+
+### 1. **Configuração Inicial**
+- Certifique-se de que o MySQL está rodando
+- Execute a aplicação Spring Boot
+- Acesse `http://localhost:8080/swagger-ui.html` para a documentação interativa
+
+### 2. **Autenticação**
+- **Registrar usuário**: `POST /auth/register`
+- **Login**: `POST /auth/login` (retorna token JWT)
+- **Usar token**: No Swagger, clique em "Authorize" e insira `Bearer <seu_token>`
+
+### 3. **Endpoints Disponíveis**
+- `GET /tasks` - Listar tarefas do usuário
+- `GET /tasks/{id}` - Buscar tarefa por ID
+- `GET /tasks/search/{title}` - Buscar tarefa por título
+- `POST /tasks` - Criar nova tarefa
+- `PATCH /tasks/{id}` - Atualizar tarefa
+- `PATCH /tasks/{id}/done` - Marcar tarefa como concluída
+- `DELETE /tasks/{id}` - Excluir tarefa
 
 ## 🏗️ Próximos Passos (Roadmap)
 - [ ] **Docker**: Containerização da aplicação e do banco de dados para facilitar o deploy.
