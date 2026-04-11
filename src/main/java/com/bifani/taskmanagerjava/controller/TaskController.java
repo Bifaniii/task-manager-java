@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @GetMapping("/search/{title}")
-    public ResponseEntity<TaskResponse> getTaskByTitle(@RequestParam String title) {
+    public ResponseEntity<TaskResponse> getTaskByTitle(@PathVariable String title) {
         var task = service.getTaskByTitle(title);
 
         return ResponseEntity.ok(new TaskResponse(task));
