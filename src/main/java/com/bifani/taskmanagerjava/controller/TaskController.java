@@ -4,6 +4,7 @@ import com.bifani.taskmanagerjava.dto.TaskRequest;
 import com.bifani.taskmanagerjava.dto.TaskResponse;
 import com.bifani.taskmanagerjava.service.TaskService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,13 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
+@RequiredArgsConstructor
 public class TaskController {
 
     private final TaskService service;
 
-    public TaskController(TaskService service) {
-        this.service = service;
-    }
 
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getAllTasks() {

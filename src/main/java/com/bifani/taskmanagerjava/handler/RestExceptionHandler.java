@@ -6,6 +6,7 @@ import com.bifani.taskmanagerjava.exception.TaskNotFoundException;
 import com.bifani.taskmanagerjava.exception.UserAlreadyExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -27,6 +28,17 @@ public class RestExceptionHandler {
     @ExceptionHandler(UserAlreadyExistsException.class)
     private ResponseEntity<ErrorResponse> userAlreadyExistsHandler(UserAlreadyExistsException exception) {
         ErrorResponse threatResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(threatResponse);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    private ResponseEntity<ErrorResponse> methodArgumentNotValidHandler(MethodArgumentNotValidException exception) {
+        String message = exception.getBindingResult().getFieldErrors()
+                .stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .reduce((a, b) -> a + "; " + b)
+                .orElse("Erro de validação");
+        ErrorResponse threatResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(threatResponse);
     }
 }
