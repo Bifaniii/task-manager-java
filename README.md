@@ -2,6 +2,8 @@
 
 Um gerenciador de tarefas robusto desenvolvido com **Spring Boot**, focado em boas práticas de desenvolvimento, persistência de dados e organização em camadas.
 
+**Status: ✅ PROJETO FINALIZADO E PRONTO PARA USO**
+
 ## 🚀 Tecnologias
 - **Java 17+**
 - **Spring Boot 3**
@@ -48,9 +50,12 @@ O projeto utiliza MySQL. Certifique-se de que o banco `taskmanager` existe ou de
 - `PATCH /tasks/{id}/done` - Marcar tarefa como concluída
 - `DELETE /tasks/{id}` - Excluir tarefa
 
-## 🏗️ Próximos Passos (Roadmap)
-- [ ] **Docker**: Containerização da aplicação e do banco de dados para facilitar o deploy.
-- [ ] **Testes Unitários**: Garantir a cobertura da lógica de negócio com JUnit e Mockito.
+## 🎯 Status do Projeto
+- [x] ✅ **Desenvolvimento Concluído**
+- [x] ✅ **Autenticação e Segurança Implementada**
+- [x] ✅ **API Completa e Funcional**
+- [x] ✅ **Documentação Swagger Integrada**
+- [x] ✅ **Código em Produção**
 
 ---
 Desenvolvido por [Bifaniii](https://github.com/Bifaniii)
