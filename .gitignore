@@ -1,8 +1,28 @@
+# Environment and Secrets
+.env
+.env.local
+.env.*.local
+.properties.local
+
+# Build and Dependencies
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IDE ###
+.idea/
+.vscode/
+.DS_Store
+*.iws
+*.iml
+*.ipr
+*.sublime-project
+*.sublime-workspace
 
 ### STS ###
 .apt_generated
@@ -13,22 +33,17 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
-.vscode/
-.env
+### Maven ###
+*.jar
+!bfg-*.jar
+
+### Logs ###
+*.log
+startup.log
