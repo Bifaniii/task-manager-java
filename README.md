@@ -1,12 +1,14 @@
 # Task Manager Java 📝
 
+![CI](https://github.com/Bifaniii/task-manager-java/actions/workflows/ci.yml/badge.svg)
+
 Um gerenciador de tarefas robusto desenvolvido com **Spring Boot**, focado em boas práticas de desenvolvimento, persistência de dados e organização em camadas.
 
-**Status: ✅ PROJETO FINALIZADO E PRONTO PARA USO**
+**Status:** funcionalidades principais concluídas, com testes automatizados e CI.
 
 ## 🚀 Tecnologias
 - **Java 17+**
-- **Spring Boot 3**
+- **Spring Boot 4**
 - **Spring Data JPA**
 - **Spring Security** (Autenticação e Autorização)
 - **JSON Web Token (JWT)** (Autenticação Stateless)
@@ -14,6 +16,7 @@ Um gerenciador de tarefas robusto desenvolvido com **Spring Boot**, focado em bo
 - **Lombok** (para redução de boilerplate)
 - **Jakarta Validation** (para integridade dos dados)
 - **SpringDoc OpenAPI (Swagger)** (para documentação interativa)
+- **JUnit 5, Mockito e MockMvc** (testes automatizados) + **H2** no perfil de testes
 
 ## 🛠️ Configuração de Banco de Dados
 O projeto utiliza MySQL. Certifique-se de que o banco `taskmanager` existe ou deixe a flag `createDatabaseIfNotExist=true` ativa no seu `application.properties`.
@@ -50,12 +53,19 @@ O projeto utiliza MySQL. Certifique-se de que o banco `taskmanager` existe ou de
 - `PATCH /tasks/{id}/done` - Marcar tarefa como concluída
 - `DELETE /tasks/{id}` - Excluir tarefa
 
-## 🎯 Status do Projeto
-- [x] ✅ **Desenvolvimento Concluído**
-- [x] ✅ **Autenticação e Segurança Implementada**
-- [x] ✅ **API Completa e Funcional**
-- [x] ✅ **Documentação Swagger Integrada**
-- [x] ✅ **Código em Produção**
+## 🧪 Testes
+Testes unitários dos services com **JUnit 5 + Mockito** e testes de controller com **MockMvc** (status HTTP, validação e tratamento de erros). O teste de contexto roda com **H2 em memória**, então não precisa de MySQL:
+
+```bash
+./mvnw test
+```
+
+O workflow do GitHub Actions roda a suíte a cada push na `main` e em todo pull request.
+
+## 🎯 Próximos passos
+- [ ] Docker Compose com a aplicação e o MySQL
+- [ ] Migrations com Flyway no lugar de `ddl-auto=update`
+- [ ] Deploy público com o Swagger acessível
 
 ---
 Desenvolvido por [Bifaniii](https://github.com/Bifaniii)
